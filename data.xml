@@ -1,0 +1,8 @@
+<data>
+    <models>
+        <ip name="ipServer">224.0.0.3</ip>
+        <puerto name="Puerto">5001</puerto>
+        <dispositivo name="disp">0</dispositivo>
+        <canales name="can">1</canales>
+    </models>
+</data>
