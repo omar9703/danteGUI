@@ -59,7 +59,8 @@ class MainWindow:
                     self.isRunning = True
                     self.widget.config(text='Parar')
                     self.widget.config(bg='red')
-                    self.setSocket()
+                    x = th.Thread(target=self.setSocket)
+                    x.start()
                 else :
                     
                     self.widget.config(text='Iniciar')
@@ -100,6 +101,7 @@ class MainWindow:
             self.label.config(text="Numero de Canales: " + str(self.c))
 
     def sonido(self):
+            event = th.Event()
             try:
                 print("canal 1")
                 Y = sd.InputStream(
@@ -108,8 +110,7 @@ class MainWindow:
                 self.i = Y
                 with self.i:
                     print("dsf")
-                    #while True:
-                     #   print("a")
+                    event.wait()
 
             except Exception as e:
                 messagebox.showerror(title='error',message=e)
@@ -139,7 +140,7 @@ class MainWindow:
         c = np.transpose(indata)
         h = np.concatenate(c,axis=0)
         #print("popo",np.sum(indata,axis=1),"popo")3
-        print("po",np.sum(indata,axis=1),"po")
+        #print("po",np.sum(indata,axis=1),"po")
         #print('p')
         #h = np.sum(indata,axis=1)
         #tou=h.byteswap()
